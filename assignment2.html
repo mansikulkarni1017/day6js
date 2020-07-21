@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="">
+    </head>
+    <body>
+        <h1> Day 5 Assignment 2</h1>
+        <p> 
+            Create a Class User with properties as name, age & email.
+            He can login and logout
+            Create another class Moderator which has all the features of User, 
+            plus additional functionality to Add
+            coins and remove coins.
+            Create one more class Admin which has all the features of Moderator 
+            plus additional features like add a
+            Course and delete a particular course for a user.
+        </p>
+        <script>
+            console.log("Assignment 2");
+            class User {
+            constructor(name, age,email) {
+            this.name = name;
+            this.age = age;
+            this.email = email;
+            this.Coins = 0;
+            this.courses = [];
+            }
+            login(){
+            console.log(`${this.name} has logged in`);
+            return this;
+            }
+            logout(){
+            console.log(`${this.name} has logged out`);
+            return this;
+            }
+            }
+            class Moderator extends User{
+            constructor(name,age,email,){
+            super(name,age,email);
+            
+            }
+            addCoins(user){
+            this.Coins++;
+            console.log(`${this.name} has ${this.Coins} coins`);
+            return this;
+            }
+            deleteCoins(user){
+            users = users.filter(u  =>{
+            return u.Coins != user.Coins; 
+            })
+            }
+        }
+            class Admin extends Moderator{
+            addCourse(user,course){
+            user.courses.push(course);
+            console.log(user);
+            }
+            }
+            let user1 = new User('Dilip',25,'dilip@gmail.com')
+            let user2 = new User('Krishnan',24,'k@gmai.com')
+            let mod = new Moderator('Berlin',24,'b@gmail.com');
+            let admin = new Admin('Rio',25,'r@gmail.com');
+            let users = [user1,user2,mod,admin];
+            users.forEach(element => {
+            console.log(element);
+            });
+            admin.addCourse(user1,'Javascript');
+            admin.addCourse(user1,'Python');
+            user1.login()
+            mod.addCoins();
+            mod.addCoins();
+            mod.addCoins();
+            user1.logout()
+
+            user1.login().logout();
+            mod.deleteCoins(user1);
+            console.log(users);
+
+
+            
+             
+
+
+        </script>
+    </body>
+</html>
